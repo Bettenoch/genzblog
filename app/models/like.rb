@@ -6,8 +6,8 @@ class Like < ApplicationRecord
 
   validates :user, presence: true
   validates :post, presence: true
-  validates_uniqueness_of :user_id, scope: :post_id, message: "You can only like a post once."
-  
+  validates_uniqueness_of :user_id, scope: :post_id, message: 'You can only like a post once.'
+
   def increment_likes_counter
     post.increment!(:likes_counter)
   end
