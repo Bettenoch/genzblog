@@ -4,9 +4,11 @@ class Like < ApplicationRecord
 
   after_save :increment_likes_counter
 
-  private
+  validates :user, presence: true
+  validates :post, presence: true
+  validates_uniqueness_of :user_id, scope: :post_id, message: 'You can only like a post once.'
 
   def increment_likes_counter
-    post.update(likes_counter: post.likes.count)
+    post.increment!(:likes_counter)
   end
 end
