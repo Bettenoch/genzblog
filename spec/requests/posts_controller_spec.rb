@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :request do
-
   describe 'GET #index' do
     let(:user) { User.create(name: 'Bett', photo: 'https://memyself.com/photos/memyself', bio: 'Greatest man alive', posts_counter: 3) }
     let(:post) { Post.create(author: user, title: 'Amazing skills', text: 'Test post') }
@@ -20,7 +19,7 @@ RSpec.describe PostsController, type: :request do
       get user_posts_path(user)
       expect(response).to render_template('index')
     end
-  
+
     it 'includes correct placeholder text in the response body' do
       get user_posts_path(user)
       expect(response.body).to include('Post text')
@@ -50,7 +49,7 @@ RSpec.describe PostsController, type: :request do
       get user_post_path(user, post)
       expect(response).to render_template('show')
     end
-  
+
     it 'includes correct placeholder text in the response body' do
       get user_post_path(user, post)
       expect(response.body).to include('Post by User')
