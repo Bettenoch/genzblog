@@ -37,5 +37,15 @@ RSpec.describe UsersController, type: :request do
       get user_path(user)
       expect(assigns(:user)).to eq(user)
     end
+    it 'renders the right show template' do
+      get user_path(user)
+      expect(response).to render_template(:show)
+    end
+
+    it 'includes correct placeholder text in the response body' do
+      get user_path(user)
+      expect(response.body).to include('User Profile')
+      expect(response.body).to include('Name: ')
+    end
   end
 end
