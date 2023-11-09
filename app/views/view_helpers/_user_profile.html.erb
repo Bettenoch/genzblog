@@ -1,0 +1,16 @@
+
+<div class="user-photo-container border-black-300">
+  <% if user.photo.present? %>
+    <img src="<%= user.photo %>" alt="user-profile" class="user-photo h-10 w-10 rounded-full ">
+  <% else %>
+    <i class="fas fa-user"></i>
+  <% end %>
+    <a href="<%= user_path(user) %>" class="view-profile-link">
+      <button class="text-base text-zinc-400 subpixel-antialiased hover:bg-[#64748b] active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded">View Profile</button>
+    </a>
+</div>
+
+<div class="user-info flex justify-between flex-grow p-2 border-solid border-2 border-neutral-400 rounded-md hover:border-neutral-800">
+  <h2 class="user-name text-2xl text-teal-800 font-semibold"><%= user.name %></h2>
+  <p class="user-posts text-[13px] font-[400]">Posts: <%= user.posts_counter %></p>
+</div>
