@@ -1,0 +1,13 @@
+<div class="user-post-comments px-7 flex flex-col gap-2 list-disc">
+    <% if @post.comments.present? %>
+
+        <% @post.comments.each do |comment| %>
+          <div class="custom-post-comments  text-sm">
+            <span class="text-emerald-700"><%= comment.user.name %>:</span>
+            <span><%= comment.text %></span>
+          </div>
+        <% end %>
+    <% else %>
+        <p>No comments yet.</p>
+    <% end %>
+</div>
