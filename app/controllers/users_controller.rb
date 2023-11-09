@@ -6,15 +6,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    # Set in the before_action
+    @posts = @user.top_three_recent_posts
   end
 
   private
 
   def set_user
     @user = User.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'User not found'
-    redirect_to users_path
   end
 end
