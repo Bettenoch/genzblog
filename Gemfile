@@ -70,5 +70,5 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem "tailwindcss-rails", "~> 2.0"
-gem "font-awesome-sass", "~> 6.4.2"
+gem 'font-awesome-sass', '~> 6.4.2'
+gem 'tailwindcss-rails', '~> 2.0'
