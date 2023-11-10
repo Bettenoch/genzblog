@@ -16,18 +16,20 @@
     <ul class="top-three-posts flex flex-col gap-2">
       <% @user.top_three_recent_posts.each do |post| %>
         <li class="custom-post flex flex-col border-solid border-2 border-neutral-400 rounded hover:border-neutral-800">
-          <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
-          <p class="p-2 font-light"><%= post.text %></p>
-          <div class='interactions p-2 self-end'>
-            <span>Comments: <%= post.comments_counter %>,</span>
-            <span>Likes: <%= post.likes_counter %></span>
-          </div>
+          <a href="<%= user_posts_path(@user) %>" class="flex flex-col">
+            <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
+            <p class="p-2 font-light"><%= post.text %></p>
+            <div class='interactions p-2 self-end'>
+              <span>Comments: <%= post.comments_counter %>,</span>
+              <span>Likes: <%= post.likes_counter %></span>
+            </div>
+          </a>
         </li>
       <% end %>
     </ul>
     <div class="grid ">
-      <a href="<%= user_posts_path(@user) %> " class="border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center">
-        <button class="see-post-btn text-lg p-2">See all posts</button>
+      <a href="<%= new_user_post_path(@user) %>" class="border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center">
+        <button class="see-post-btn text-lg p-2">Add new post</button>
       </a>
     </div>
   </div>
