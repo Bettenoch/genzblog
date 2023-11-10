@@ -1,1 +1,15 @@
-<h1>list of all users</h1>
+<ul class="user_profile flex flex-col gap-8 py-4 w-[80%] mx-auto">
+    
+  <% @users.each do |user| %>
+    <a href="<%= user_path(user) %>">
+      <li class="profile-card flex flex-row gap-[30px] p-4">
+            
+        <div class="flex flex-row flex-grow gap-4">
+          <%= render partial: 'view_helpers/user_profile', locals: { user: user } %>
+        </div>
+            
+      </li>
+    </a>
+  <% end %>
+</ul>
+

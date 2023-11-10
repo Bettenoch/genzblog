@@ -69,3 +69,6 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+gem 'font-awesome-sass', '~> 6.4.2'
+gem 'tailwindcss-rails', '~> 2.0'

@@ -1,4 +1,42 @@
-<h1>Posts for <%= @user.name %></h1>
-<p>Post text</p>
-<p>Comments: 3</p>
-<p>Likes: 44</p>
+<section class="posts-page flex flex-col gap-8 w-[80%] mx-auto">
+  <div class='header-posts py-6'>
+      <a href="<%= user_path(@user) %>">
+        <div class="flex flex-row gap-[30px] p-4 ">
+          <%= render partial: 'view_helpers/user_profile', locals: { user: @user } %>
+        </div>
+      </a>
+  </div>
+  <ul class='posts-comments-section flex flex-col gap-4'>
+    <% @posts.each do |post|%>
+      <li class="flex flex-col border-solid border-2 border-neutral-400 rounded hover:border-neutral-800">
+        <a href="<%= user_post_path(@user, post) %> " class="px-6">
+            <div class="custom-post flex flex-col">
+              <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
+              <p class="p-2 font-light"><%= post.text %></p>
+              <div class='interactions p-2 self-end'>
+                <span>Comments: <%= post.comments_counter %>,</span>
+                <span>Likes: <%= post.likes_counter %></span>
+              </div>
+            </div>
+
+            <div class='comments-sec flex flex-col p-2'>
+              <h3 class="p-2 text-lg font-semibold">Comments:</h3>
+              <ul class="px-7 flex flex-col gap-2">
+                <% post.top_five_comments.each do |comment, index| %>
+                  <li class="user-comments list-disc text-sm">
+                    <span class="text-emerald-700"><%= comment.user.name %>:</span>
+                    <span class=""><%= comment.text %></span>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="grid ">
+    <a href="<%= users_path() %>" class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center'>
+      <button class='pagination-btn text-lg p-2'>Pagination</button>
+    </a>
+  </div>
+</section>
