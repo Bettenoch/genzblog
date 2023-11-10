@@ -11,12 +11,12 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @like = Like.new
   end
-  
+
   def new
     # @user = current_user
     @post = Post.new
   end
-  
+
   # def like
   #   @like = @post.likes.new(user: current_user)
   #   if @like.save
