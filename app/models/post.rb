@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id', counter_cache: :posts_counter
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   after_save :increment_post_counter
 
@@ -14,12 +14,7 @@ class Post < ApplicationRecord
     comments.order(created_at: :desc).limit(limit)
   end
 
-  # A method to increment the likes_counter attribute.
-  # def increment_likes_counter
-  #   update(likes_counter: likes_counter + 1)
-  # endn
-
   def increment_post_counter
-    author.increment!(:posts_counter) if author.present?
+    author.update(posts_counter: author.posts.count) if author.present?
   end
 end
