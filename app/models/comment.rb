@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :user, class_name: 'User'
-  belongs_to :post, counter_cache: :comments_counter, optional: true
+  belongs_to :user, class_name: 'User', foreign_key: :user_id
+  belongs_to :post
 
   after_save :increment_comments_counter
 
@@ -9,6 +9,6 @@ class Comment < ApplicationRecord
   validates :post, presence: true
 
   def increment_comments_counter
-    post.increment!(:comments_counter)
+    post.update(comments_counter: post.comments.count)
   end
 end

@@ -35,8 +35,8 @@
     <% end %>
   </ul>
   <div class="grid ">
-    <a href="<%= users_path() %>" class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center'>
-      <button class='pagination-btn text-lg p-2'>Pagination</button>
+    <a href="<%= new_user_post_path(@user) %>" class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center'>
+      <button class='pagination-btn text-lg p-2'><span class='plus'>+</span>Add Post</button>
     </a>
   </div>
 </section>

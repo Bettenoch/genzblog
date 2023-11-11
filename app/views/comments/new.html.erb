@@ -1,0 +1,26 @@
+<section class="page-container  grid mx-auto flex-1 py-4 w-[80%]">
+  <div class="page-content justify-self-center flex flex-col items-centre gap-2">
+    <a href="<%= user_post_path(@user, @post) %>" class="back-link">
+        <button id="back-btn text-2xl text-lime-950">⬅</button>
+    </a>
+
+    <div class='comment-text'>
+        <h1 class="text-2xl text-slate-900">Create a New Comment</h1>
+        <h2 class="text-sm text-slate-700">Post <%= @post.id %></h2>
+        <p class="text-sm text-slate-700">User: <%= @user.name %></p>
+    </div>
+
+    <ul class="form-container flex gap-2 w-full max-w-xs">
+        <%= form_with model: [@post, @comment], url: create_post_comment_path, local: true, html: { class: 'comment-form flex flex-1 flex-col gap-2 bg-[#f8fafc] shadow-md rounded px-8 pt-6 pb-8 mb-4' } do |form| %>
+            <li class="field">
+                <%= form.label :text, class: 'form-label block text-gray-700 text-sm font-bold mb-2' %>
+                <%= form.text_area :text, class: 'form-textarea fm-input outline-none shadow appearance-none border-2 rounded w-full py-4 px-8 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-emerald-900' %>
+            </li>
+
+            <li class="actions grid">
+                <%= form.submit 'Create Comment', class: 'submit-btn max-w-max justify-self-center shadow bg-cyan-800 hover:bg-cyan-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded' %>
+            </li>
+        <% end %>
+    </ul>
+  </div>
+</section>
