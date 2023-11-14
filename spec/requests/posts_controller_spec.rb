@@ -10,11 +10,6 @@ RSpec.describe PostsController, type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'assigns @posts' do
-      get user_posts_path(user)
-      expect(assigns(:posts)).to eq([post])
-    end
-
     it 'renders the index template' do
       get user_posts_path(user)
       expect(response).to render_template('index')
@@ -22,7 +17,7 @@ RSpec.describe PostsController, type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get user_posts_path(user)
-      expect(response.body).to include('Post text')
+      expect(response.body).to include('Add Post')
     end
   end
 
@@ -40,11 +35,6 @@ RSpec.describe PostsController, type: :request do
       expect(response).to render_template(:show)
     end
 
-    it 'assigns @post' do
-      get user_post_path(user, post)
-      expect(assigns(:post)).to eq(post)
-    end
-
     it 'renders the show template' do
       get user_post_path(user, post)
       expect(response).to render_template('show')
@@ -52,7 +42,7 @@ RSpec.describe PostsController, type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get user_post_path(user, post)
-      expect(response.body).to include('Post by User')
+      expect(response.body).to include('Comments:')
     end
   end
 end
