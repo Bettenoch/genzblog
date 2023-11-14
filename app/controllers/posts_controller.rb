@@ -1,30 +1,22 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: %i[index show]
+  before_action :set_user, only: %i[index show new create]
   before_action :set_post, only: %i[show]
 
   def index
+    @user = User.includes(posts: :comments).find(params[:user_id])
     @posts = @user.posts
     @comment = Comment.new
   end
 
   def show
+    @post = Post.includes(:comments).find(params[:id])
     @comments = @post.comments
     @like = Like.new
   end
 
   def new
-    # @user = current_user
     @post = Post.new
   end
-
-  # def like
-  #   @like = @post.likes.new(user: current_user)
-  #   if @like.save
-  #     redirect_to user_post_path(@user, @post)
-  #   else
-  #     redirect_to user_post_path(@user, @post), alert: 'Failed to like the post.'
-  #   end
-  # end
 
   def create
     @post = current_user.posts.new(post_params)
@@ -47,7 +39,7 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = @user.posts.find_by_id(params[:id])
+    @post = @user.posts.includes(:comments).find_by_id(params[:id])
     return unless @post.nil?
 
     flash[:alert] = 'No post, back to posts page!!'
