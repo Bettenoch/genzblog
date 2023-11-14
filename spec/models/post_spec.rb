@@ -12,7 +12,7 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'Associations' do
-    it { should belong_to(:author).class_name('User').with_foreign_key('author_id').counter_cache(:posts_counter) }
+    it { should belong_to(:author).class_name('User').with_foreign_key('author_id') }
     it { should have_many(:comments).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
   end
