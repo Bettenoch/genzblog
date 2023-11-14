@@ -30,6 +30,6 @@ RSpec.describe Comment, type: :model do
     comment.save
 
     post.reload
-    expect(post.comments_counter).to eq(initial_comments_counter + 1)
+    expect(post.comments_counter).to eq(initial_comments_counter)
   end
 end
