@@ -11,7 +11,9 @@
   </div>
 
   <div class="user-info flex justify-between flex-grow p-4 border-solid border-2 border-neutral-400 rounded-md hover:border-neutral-800">
-    <h2 class="user-name text-2xl text-teal-800 font-semibold"><%= user.name %></h2>
+    <a href="<%= user_path(user) %>" class="view-profile-link">
+      <h2 class="user-name text-2xl text-teal-800 font-semibold"><%= user.name %></h2>
+    </a>
     <p class="user-posts text-[13px] font-[400]">Posts: <%= user.posts_counter %></p>
   </div>
 
