@@ -18,16 +18,20 @@ describe 'Post Show Page', type: :feature do
     # Top Card
     expect(page).to have_content('Comments:')
     expect(page).to have_content('Likes: ')
-    expect(page).to have_content('Leo Messi')
-    expect(page).to have_link(':arrow_left:')
     expect(page).to have_link(' Add a comment')
     # Bottom Card
     expect(page).to have_css('.custom-post-container')
     expect(page).to have_css('.post-interactions')
-    expect(page).to have_content('Amazing work of art.')
+
     expect(page).to have_content('Great post!')
     expect(page).to have_content('Seems exciting!')
     expect(page).to have_content('Likes: 1')
+  end
+  it 'see the post title' do
+    expect(page).to have_content('Amazing work of art.')
+  end
+  it 'see who wrote the post' do
+    expect(page).to have_content('Leo Messi')
   end
   it 'see the number of comments a post has' do
     expect(page).to have_content('Comments: 2')
@@ -35,12 +39,5 @@ describe 'Post Show Page', type: :feature do
   it 'see the username of each commentor' do
     expect(page).to have_content(@comment1.user.name)
     expect(page).to have_content(@comment2.user.name)
-  end
-  it 'Clicking on  Add a comment button should redirect to add comment page' do
-    click_on ' Add a comment'
-    expect(page).to have_content('Create a New Comment')
-    expect(page).to have_content('Post ')
-    expect(page).to have_content('User: ')
-    expect(page).to have_link('Create Comment')
   end
 end

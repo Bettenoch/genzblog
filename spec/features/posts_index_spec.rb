@@ -17,24 +17,32 @@ describe 'post index Page', type: :feature do
   it 'displays user information correctly' do
     # Top Card
     expect(page).to have_link('View Profile')
-    expect(page).to have_css("img[src='#{@user.photo}']")
+
     expect(page).to have_content('Leo Messi')
     expect(page).to have_link('Add Post')
     # Bottom Card
     expect(page).to have_css('.posts-page')
     expect(page).to have_css('.header-posts')
-    expect(page).to have_content('Amazing work of art.')
-    expect(page).to have_content('Excited about Rails development!')
-    expect(page).to have_content('Exploring the genblogz community.')
+
     expect(page).to have_content('Great post!')
     expect(page).to have_content('Seems exciting!')
     expect(page).to have_content('Simply the best!')
     expect(page).to have_content('Likes: 0')
     expect(page).to have_content('Pagination')
   end
+  it 'see the user profile picture' do
+    expect(page).to have_css("img[src='#{@user.photo}']")
+  end
   it 'see the number of posts user has written' do
     expect(page).to have_content 'Posts: 3'
   end
+
+  it 'can see the posts user has written' do
+    expect(page).to have_content('Amazing work of art.')
+    expect(page).to have_content('Excited about Rails development!')
+    expect(page).to have_content('Exploring the genblogz community.')
+  end
+
   it 'Clicking on a post should redirect to post show page' do
     click_on 'Excited about Rails development!'
     expect(page).to have_content('Excited about Rails development!')

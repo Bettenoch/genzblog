@@ -26,6 +26,8 @@ describe 'Users Index View', type: :feature do
   it 'should return the correct CSS' do
     expect(page).to have_css('.user-photo-container')
     expect(page).to have_css('.user-info')
+  end
+  it 'displays the profile picture for each user' do
     expect(page).to have_css("img[src*='https://example.com/leo-messi.jpg']")
     expect(page).to have_css("img[src*='https://example.com/kh-hatz.jpg']")
   end
