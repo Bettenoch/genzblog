@@ -12,7 +12,9 @@
         <a href="<%= user_post_path(@user, post) %> " class="px-6">
             <div class="custom-post flex flex-col">
               <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
+              <h4 class="font-semibold"><%= post.title %></h4>
               <a href="<%= user_post_path(@user, post) %>" class="p-2 ">
+                
                 <p class="font-light"><%= post.text %></p>
               </a>
               <div class='interactions p-2 self-end'>

@@ -29,6 +29,17 @@ describe 'post index Page', type: :feature do
     expect(page).to have_css("img[src='#{@user.photo}']")
   end
 
+  it 'I can see a posts title.' do
+    expect(page).to have_content('My First Post')
+    expect(page).to have_content('Rails Rocks')
+    expect(page).to have_content('Taking a ride')
+  end
+
+  it 'can see some of the posts body' do
+    expect(page).to have_content('Amazing work of art.')
+    expect(page).to have_content('Excited about Rails development!')
+  end
+
   it 'see the users username.' do
     expect(page).to have_content('Leo Messi')
   end
@@ -57,10 +68,10 @@ describe 'post index Page', type: :feature do
   end
 
   it 'Clicking on a post should redirect to post show page' do
-    click_on 'Excited about Rails development!'
-    expect(page).to have_content('Excited about Rails development!')
-    expect(page).to have_content('Seems exciting!')
+    click_on 'Amazing work of art.'
+    expect(page).to have_content('Amazing work of art.')
+    expect(page).to have_content('Great post!')
     expect(page).to have_content('Comments: 1')
-    expect(current_path).to eq(user_post_path(@user, @post2))
+    expect(current_path).to eq(user_post_path(@user, @post1))
   end
 end
