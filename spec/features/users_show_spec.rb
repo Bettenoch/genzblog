@@ -48,7 +48,7 @@ describe 'User Show Page', type: :feature do
     expect(page).to have_link('See all post')
   end
 
-  it 'Clicking on the post should redirect to post index page' do
+  it 'Clicking on the post should redirect to post show page' do
     click_on 'Excited about Rails development!'
     expect(page).to have_content('Leo Messi')
     expect(page).to have_content('Amazing work of art.')
