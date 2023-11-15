@@ -36,8 +36,15 @@ describe 'Post Show Page', type: :feature do
   it 'see the number of comments a post has' do
     expect(page).to have_content('Comments: 2')
   end
+  it 'see the post body.' do
+    expect(page).to have_content('Amazing work of art.')
+  end
   it 'see the username of each commentor' do
     expect(page).to have_content(@comment1.user.name)
     expect(page).to have_content(@comment2.user.name)
+  end
+  it 'see the comment each commentor left' do
+    expect(page).to have_content('Great post!')
+    expect(page).to have_content('Seems exciting!')
   end
 end

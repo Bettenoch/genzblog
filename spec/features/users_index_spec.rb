@@ -31,11 +31,6 @@ describe 'Users Index View', type: :feature do
     expect(page).to have_css("img[src*='https://example.com/leo-messi.jpg']")
     expect(page).to have_css("img[src*='https://example.com/kh-hatz.jpg']")
   end
-  # it 'displays "No users found" message when there are no users' do
-  #   User.destroy_all # Remove all users from the database
-  #   visit users_path
-  #   expect(page).to have_content('No users found')
-  # end
 
   it 'When I click on user, it redirects to user/show page' do
     click_on 'Leo Messi'
@@ -51,5 +46,14 @@ describe 'Users Index View', type: :feature do
     expect(page).to have_content('Bio')
     expect(page).to have_content('See all post')
     expect(current_path).to eq(user_path(@user2))
+  end
+  it 'displays the username of all other users' do
+    expect(page).to have_content('Leo Messi')
+    expect(page).to have_content('Khai Havertz')
+  end
+
+  it 'displays the number of posts each user has written' do
+    expect(page).to have_content('Posts: 8')
+    expect(page).to have_content('Posts: 4')
   end
 end

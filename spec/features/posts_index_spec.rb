@@ -18,23 +18,36 @@ describe 'post index Page', type: :feature do
     # Top Card
     expect(page).to have_link('View Profile')
 
-    expect(page).to have_content('Leo Messi')
     expect(page).to have_link('Add Post')
     # Bottom Card
     expect(page).to have_css('.posts-page')
     expect(page).to have_css('.header-posts')
 
     expect(page).to have_content('Great post!')
-    expect(page).to have_content('Seems exciting!')
-    expect(page).to have_content('Simply the best!')
-    expect(page).to have_content('Likes: 0')
-    expect(page).to have_content('Pagination')
   end
   it 'see the user profile picture' do
     expect(page).to have_css("img[src='#{@user.photo}']")
   end
+
+  it 'see the users username.' do
+    expect(page).to have_content('Leo Messi')
+  end
+
   it 'see the number of posts user has written' do
     expect(page).to have_content 'Posts: 3'
+  end
+
+  it 'see the first comments on a post' do
+    expect(page).to have_content('Seems exciting!')
+    expect(page).to have_content('Simply the best!')
+  end
+
+  it 'see how many likes a post has.' do
+    expect(page).to have_content('Likes: 0')
+  end
+
+  it 'see a section for pagination if there are more posts than fit on the view..' do
+    expect(page).to have_content('Pagination')
   end
 
   it 'can see the posts user has written' do
