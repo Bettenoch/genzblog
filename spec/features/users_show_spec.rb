@@ -17,24 +17,38 @@ describe 'User Show Page', type: :feature do
   it 'displays user information correctly' do
     # Top Card
     expect(page).to have_link('View Profile')
-    expect(page).to have_css("img[src='#{@user.photo}']")
-    expect(page).to have_content('Leo Messi')
-    expect(page).to have_content('Best number ten')
-    expect(page).to have_link('See all post')
 
     # Bottom Card
     expect(page).to have_css('.user-photo-container')
     expect(page).to have_css('.user-info')
+  end
+
+  it 'see the user profile picture' do
+    expect(page).to have_css("img[src='#{@user.photo}']")
+  end
+
+  it 'displays the users username' do
+    expect(page).to have_content('Leo Messi')
+  end
+
+  it 'see the user first three posts' do
     expect(page).to have_content('Amazing work of art.')
     expect(page).to have_content('Excited about Rails development!')
     expect(page).to have_content('Exploring the genblogz community.')
   end
-
   it 'see the number of posts user has written' do
     expect(page).to have_content 'Posts: 3'
   end
 
-  it 'Clicking on the post should redirect to post index page' do
+  it 'displays users bio' do
+    expect(page).to have_content('Best number ten')
+  end
+
+  it 'displays  a button that lets me view all of a users posts' do
+    expect(page).to have_link('See all post')
+  end
+
+  it 'Clicking on the post should redirect to post show page' do
     click_on 'Excited about Rails development!'
     expect(page).to have_content('Leo Messi')
     expect(page).to have_content('Amazing work of art.')

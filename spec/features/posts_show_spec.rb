@@ -45,6 +45,6 @@ describe 'Post Show Page', type: :feature do
   end
   it 'see the comment each commentor left' do
     expect(page).to have_content('Great post!')
-    expect(page).to have_content('Seeoms exciting!')
+    expect(page).to have_content('Seems exciting!')
   end
 end
