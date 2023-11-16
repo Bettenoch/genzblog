@@ -12,7 +12,11 @@
         <a href="<%= user_post_path(@user, post) %> " class="px-6">
             <div class="custom-post flex flex-col">
               <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
-              <p class="p-2 font-light"><%= post.text %></p>
+              <h4 class="font-semibold"><%= post.title %></h4>
+              <a href="<%= user_post_path(@user, post) %>" class="p-2 ">
+                
+                <p class="font-light"><%= post.text %></p>
+              </a>
               <div class='interactions p-2 self-end'>
                 <span>Comments: <%= post.comments_counter %>,</span>
                 <span>Likes: <%= post.likes_counter %></span>
@@ -34,8 +38,12 @@
       </li>
     <% end %>
   </ul>
-  <div class="grid ">
-    <a href="<%= new_user_post_path(@user) %>" class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center'>
+  <div class="grid grid-cols-2 mb-2">
+    <div class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-center'>
+      <button class='pagination-btn text-lg p-2'>Pagination</button>
+    </div>
+
+    <a href="<%= new_user_post_path(@user) %>" class='post-pagination border-solid border-4 border-cyan-600 rounded-full hover:border-cyan-950 max-w-max justify-self-end'>
       <button class='pagination-btn text-lg p-2'><span class='plus'>+</span>Add Post</button>
     </a>
   </div>
