@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  devise_for :users
   get '/sign_out_user', to: 'users#sign_out_user', as: 'sign_out_user'
   get "up" => "rails/health#show", as: :rails_health_check
   
