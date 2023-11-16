@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @posts = @user.top_three_recent_posts
   end
 
-  def user_sign_out
+  def sign_out_user
     sign_out(current_user)
     redirect_to root_path, notice: 'Signed out successfully'
   end
