@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params.merge(post: @post))
-   
+
     if @comment.save
       flash[:notice] = 'Comment created successfully.'
       redirect_to user_post_path(@post.author, @post)
