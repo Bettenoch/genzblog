@@ -1,4 +1,5 @@
 <section class="posts-page flex flex-col gap-8 w-[80%] mx-auto">
+  <%= link_to 'Back', users_path %>
   <div class='header-posts py-6'>
       <a href="<%= user_path(@user) %>">
         <div class="flex flex-row gap-[30px] p-4 ">
@@ -9,17 +10,20 @@
   <ul class='posts-comments-section flex flex-col gap-4'>
     <% @posts.each do |post|%>
       <li class="flex flex-col border-solid border-2 border-neutral-400 rounded hover:border-neutral-800">
-        <a href="<%= user_post_path(@user, post) %> " class="px-6">
+        <a href="<%= user_post_path(post.author, post) %> " class="px-6">
             <div class="custom-post flex flex-col">
               <h3 class="p-2 text-lg font-semibold">Post <%= raw "#" + post.id.to_s %></h3>
               <h4 class="font-semibold"><%= post.title %></h4>
-              <a href="<%= user_post_path(@user, post) %>" class="p-2 ">
+              <a href="<%= user_post_path(post.author, post) %>" class="p-2 ">
                 
                 <p class="font-light"><%= post.text %></p>
               </a>
               <div class='interactions p-2 self-end'>
                 <span>Comments: <%= post.comments_counter %>,</span>
                 <span>Likes: <%= post.likes_counter %></span>
+                <% if can? :destroy, post %>
+                  <%= button_to 'Delete Post', user_post_path(@user, post), method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, class: 'button-link py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-[#f472b6] bg-[#be185d] rounded-full border border-gray-200 hover:bg-[#ec4899] hover:text-[#faf5ff] focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' %>
+                <% end %>
               </div>
             </div>
 
