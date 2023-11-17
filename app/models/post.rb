@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   after_save :increment_post_counter
+  after_destroy :increment_post_counter
 
   # validations
   validates :title, presence: true, length: { maximum: 250 }
