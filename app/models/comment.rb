@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   after_save :increment_comments_counter
+  after_destroy :increment_comments_counter
 
   validates :text, presence: true
   validates :user, presence: true

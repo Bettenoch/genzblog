@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_user, only: %i[index show new create]
+  load_and_authorize_resource
+  before_action :set_user, only: %i[index show new]
   before_action :set_post, only: %i[show]
 
   def index
@@ -19,10 +20,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @user = current_user
+    @post = @user.posts.new(post_params)
     if @post.save
       flash[:notice] = 'Post created successfully.'
-      redirect_to user_path(current_user)
+      redirect_to user_post_path(@user, @post)
     else
       render :new
     end
@@ -32,6 +34,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :text)
+  end
+
+  def destroy
+    @current_user = current_user
+    @current_user.posts.destroy(params[:id])
+    redirect_to user_posts_path(@user)
   end
 
   def set_user
