@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :set_user
-  before_action :set_post
-
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = current_user.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
     @comment.post_id = params[:post_id]
     if @comment.save
       flash[:notice] = 'Comment created successfully.'
@@ -22,13 +20,5 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:text)
-  end
-
-  def set_user
-    @user = current_user
-  end
-
-  def set_post
-    @post = Post.find(params[:post_id])
   end
 end
