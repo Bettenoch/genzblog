@@ -4,12 +4,12 @@
   </a>
   <div class="custom-post-container flex flex-col border-solid border-2 border-neutral-400 rounded hover:border-neutral-800">
     <div class="flex justify-between flex-grow p-4">
-      <h2>Post <%= "#" + @post.id.to_s %> by: <%= @user.name %></h2>
+      <h2>Post <%= "#" + @post.id.to_s %> by: <%= @post.author.name %></h2>
       <div class='post-interactions'>
         <span>Comments: <%= @post.comments_counter %>,</span>
         <span>Likes: <%= @post.likes_counter %></span>
       </div>
-      <%= form_with model: [@post, @like], url: create_post_like_path  do |form| %>
+      <%= form_with(model: [@post, @like], url: user_post_likes_path(@post.author, @post), method: :post)  do |form| %>
         <div class="mb-4 flex flex-col">
           <%= form.submit "Like 👍" , class: "text-[#11537d] text-xl font-medium bg-white px-4 py-2 rounded-[15px] w-fit cursor-pointer" %>
         </div>
@@ -22,7 +22,7 @@
     <h3 class="p-2 text-lg font-semibold">Comments:</h3>
     <%= render partial: 'view_helpers/post_comments', locals: { post: @post } %>
   </div>
-  <a href="<%= new_post_comment_path(@post) %>" class="grid">
+  <a href="<%= new_user_post_comment_path(@post.author, @post) %>" class="grid">
     <button class="back-btn max-w-max justify-self-center shadow bg-cyan-800 hover:bg-cyan-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"><span class='plus'>+</span> Add a comment</button>
   </a>
 </section>
