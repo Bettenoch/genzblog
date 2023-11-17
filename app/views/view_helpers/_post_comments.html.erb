@@ -6,6 +6,11 @@
             <span class="text-emerald-700"><%= comment.user.name %>:</span>
             <span><%= comment.text %></span>
           </div>
+
+          <% if can? :destroy, comment %>
+  
+            <%= link_to "Delete comment", user_post_comment_path(@post.author, @post, comment), data: { turbo_method: :delete, turbo_confirm: "Do you really want to delete this comment?" }, class: 'button-link py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white focus:outline-[#f472b6] bg-[#be185d] rounded-full border border-gray-200 hover:bg-[#ec4899] hover:text-[#faf5ff] focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700' %>
+          <% end %>
         <% end %>
     <% else %>
         <p>No comments yet.</p>
