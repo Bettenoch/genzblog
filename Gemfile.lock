@@ -143,6 +143,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.3)
     jsonapi-renderer (0.2.2)
+    jwt (2.7.1)
     language_server-protocol (3.17.0.3)
     loofah (2.21.4)
       crass (~> 1.0.2)
@@ -326,6 +327,7 @@ DEPENDENCIES
   font-awesome-sass (~> 6.4.2)
   importmap-rails
   jbuilder
+  jwt
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.1)
