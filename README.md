@@ -103,6 +103,11 @@ Example command:
 - Twitter: [@BybEnoch](https://twitter.com/BybEnoch)
 - LinkedIn: [@GeoIntelligence](https://www.linkedin.com/in/bett-kipngeno-enock-8b5153214/)
 
+👤 **Albert Antwi**
+
+- GitHub: [@albertkantwi](https://github.com/albertkantwi)
+- LinkedIn: [Albert Antwi](https://www.linkedin.com/in/albertkantwi/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
