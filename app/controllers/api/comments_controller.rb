@@ -1,4 +1,4 @@
-class Api::V1::CommentsController < Api::ApiController
+class Api::CommentsController < ApiController
   before_action :set_user_post
 
   def index
