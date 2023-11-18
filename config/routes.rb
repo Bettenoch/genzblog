@@ -13,11 +13,10 @@ Rails.application.routes.draw do
   root "users#index"
 
   namespace :api do
-    namespace :v1 do
-      resources :users, only: [:index] do
-        resources :posts, only: [:index] do
-          resources :comments, only: [:index, :create]
-        end
+    post :auth, to: 'auth#create'
+    resources :users, only: [] do
+      resources :posts, only: [:index] do
+        resources :comments, only: [:index, :create]
       end
     end
   end
