@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   namespace :api do
     post :auth, to: 'auth#create'
     resources :users, only: [] do
@@ -21,6 +21,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "users#index"
 
-
-  
 end
