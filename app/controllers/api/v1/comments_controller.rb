@@ -1,15 +1,15 @@
-class Api::CommentsController < ApiController
+class Api::V1::CommentsController < Api::ApiController
   before_action :set_user_post
 
   def index
     @comments = @post.comments
 
-    render json: @comments, include: ['author']
+    render json: @comments, include: ['user']
   end
 
   def create
     @comment = @post.comments.new(comment_params)
-    @comment.author = @user
+    @comment.user = @user
 
     if @comment.save
       render json: @comment, status: :created

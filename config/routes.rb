@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api do
-    post :auth, to: 'auth#create'
-    resources :users, only: [] do
-      resources :posts, only: [:index] do
-        resources :comments, only: [:index, :create]
+    namespace :v1 do
+      resources :users, only: [:index] do
+        resources :posts, only: [:index] do
+          resources :comments, only: [:index, :create]
+        end
       end
     end
   end
